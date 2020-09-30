@@ -102,7 +102,6 @@ QBluetoothServiceInfo RemoteSelector::service() const
 
 void RemoteSelector::serviceDiscovered(const QBluetoothServiceInfo &serviceInfo)
 {
-#if 0
     qDebug() << "Discovered service on"
              << serviceInfo.device().name() << serviceInfo.device().address().toString();
     qDebug() << "\tService name:" << serviceInfo.serviceName();
@@ -113,7 +112,7 @@ void RemoteSelector::serviceDiscovered(const QBluetoothServiceInfo &serviceInfo)
     qDebug() << "\tL2CAP protocol service multiplexer:"
              << serviceInfo.protocolServiceMultiplexer();
     qDebug() << "\tRFCOMM server channel:" << serviceInfo.serverChannel();
-#endif
+
     const QBluetoothAddress address = serviceInfo.device().address();
     for (const QBluetoothServiceInfo &info : qAsConst(m_discoveredServices)) {
         if (info.device().address() == address)

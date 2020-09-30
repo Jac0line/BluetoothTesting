@@ -40,7 +40,6 @@ private:
     QByteArray m_data;
     QAudioDecoder m_decoder;
     QAudioFormat m_format;
-
     State m_state;
 
     bool isInited;

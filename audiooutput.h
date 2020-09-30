@@ -7,25 +7,28 @@
 #include <QBluetoothSocket>
 #include "AudioFileStream.h"
 
+QT_USE_NAMESPACE
 
 class audioOutput : public QObject
 {
+    Q_OBJECT
+
 public:
     audioOutput();
     ~audioOutput();
+    void handleStateChanged(QAudio::State state);
+
     bool init();
     void play();
     void stop();
-    void outputAudioFile(QBluetoothSocket *bluetoothSocket);
-
-//public slots:
-
-//private slots:
+    void playFromFile();
+    QAudioFormat audioFormat();
 
 private:
     AudioFileStream *m_audioFileStream;
     QFile sourceFile;
     QAudioOutput *audio;
+
 
 };
 

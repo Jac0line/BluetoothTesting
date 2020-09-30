@@ -118,16 +118,13 @@ void RemoteSelector::serviceDiscovered(const QBluetoothServiceInfo &serviceInfo)
         if (info.device().address() == address)
             return;
     }
-
     QString remoteName;
     if (serviceInfo.device().name().isEmpty())
         remoteName = address.toString();
     else
         remoteName = serviceInfo.device().name();
 
-    QListWidgetItem *item =
-        new QListWidgetItem(QString::fromLatin1("%1 %2").arg(remoteName,
-                                                             serviceInfo.serviceName()));
+    QListWidgetItem *item = new QListWidgetItem(QString::fromLatin1("%1 %2").arg(remoteName,serviceInfo.serviceName()));
 
     m_discoveredServices.insert(item, serviceInfo);
     ui->remoteDevices->addItem(item);

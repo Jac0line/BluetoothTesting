@@ -31,6 +31,8 @@ bool audioOutput::init()
         return false;
     }
     QAudioOutput* m_audioOutput = new QAudioOutput(desired_audio_format);
+    qreal volume = 0.2;
+    m_audioOutput->setVolume(volume);
     m_audioOutput->start(m_audioFileStream);
     return true;
 }

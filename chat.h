@@ -3,11 +3,10 @@
 #include <QtWidgets/qdialog.h>
 
 #include <QtBluetooth/qbluetoothhostinfo.h>
+#include <QtBluetooth/qbluetoothuuid.h>
+#include <QtBluetooth/qbluetoothsocket.h>
 
 QT_USE_NAMESPACE
-
-class ChatServer;
-class ChatClient;
 
 class Chat : public QDialog
 {
@@ -18,19 +17,30 @@ public:
     ~Chat();
 
 signals:
-    void sendMessage(const QString &message);
+    void messageReceived(const QString &sender, const QString &message);
+    void connected(const QString &name);
+    void disconnected();
+    void socketErrorOccurred(const QString &errorString);
 
 private slots:
     void connectClicked();
+    void quitClicked();
     void clientDisconnected();
+    void startClient(const QBluetoothServiceInfo &remoteService, const QBluetoothAddress localDevice);
+    void stopClient();
+    void readSocket();
+    void connected();
+    void onSocketErrorOccurred(QBluetoothSocket::SocketError);
+
 
 private:
     int currentAdapterIndex = 0;
+    static const QBluetoothUuid::ServiceClassUuid uuid = QBluetoothUuid::AudioSink;
     Ui_Chat *ui;
 
-    ChatServer *server;
-    QList<ChatClient *> clients;
+    QList<Chat *> clients;
     QList<QBluetoothHostInfo> localAdapters;
 
     QString localName;
+    QBluetoothSocket *socket = nullptr;
 };

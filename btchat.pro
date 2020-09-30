@@ -10,8 +10,7 @@ SOURCES = \
     audiooutput.cpp \
     main.cpp \
     chat.cpp \
-    remoteselector.cpp \
-    chatclient.cpp
+    remoteselector.cpp
     audiooutput.cpp
     AudioFileStream.cpp
 
@@ -19,8 +18,7 @@ HEADERS = \
     AudioFileStream.h \
     audiooutput.h \
     chat.h \
-    remoteselector.h \
-    chatclient.h
+    remoteselector.h
     audiooutput.h
     AudioFileStream.h
 

@@ -52,6 +52,7 @@ qint64 AudioFileStream::readData(char* data, qint64 maxlen)
         // Is finish of file
         if (atEnd())
         {
+            qDebug() << "readData at end of file";
             stop();
         }
     }

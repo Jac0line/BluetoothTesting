@@ -14,6 +14,7 @@ Chat::Chat(QWidget *parent)
 
     connect(ui->quitButton, &QPushButton::clicked, this, &Chat::quitClicked);
     connect(ui->connectButton, &QPushButton::clicked, this, &Chat::connectClicked);
+    connect(ui->playButton, &QPushButton::clicked, this, &Chat::playClicked);
 
     localName = QBluetoothLocalDevice().name();
 }
@@ -71,6 +72,23 @@ void Chat::connectClicked()
     ui->connectButton->setEnabled(true);
 }
 
+void Chat::playClicked()
+{
+    qDebug() << "playClicked";
+    const QString &str = "bluez";
+    if(QAudioDeviceInfo::defaultOutputDevice().deviceName().contains(str)){
+        qDebug() << "defaulth = bluez";
+        audioOutput audioOutputInst;
+        audioOutputInst.init();
+        audioOutputInst.play();
+    }
+    else{
+        qDebug() << "no bluez?";
+        qDebug() << QAudioDeviceInfo::defaultOutputDevice().deviceName();
+    }
+}
+
+
 void Chat::startClient(const QBluetoothServiceInfo &remoteService, const QBluetoothAddress localDevice)
 {
     if (socket)
@@ -112,15 +130,6 @@ void Chat::startClient(const QBluetoothServiceInfo &remoteService, const QBlueto
 
     qDebug() << "socketState: " << socket->state();
 
-    if(socket->state() == QBluetoothSocket::ConnectedState || socket->state() == QBluetoothSocket::ConnectingState)
-    {
-        audioOutput audioOutputInst;
-        audioOutputInst.init();
-        audioOutputInst.play();
-    }
-    else{
-        qDebug() << "Bluetooth socket not connected or connecting state";
-    }
 }
 
 void Chat::stopClient()

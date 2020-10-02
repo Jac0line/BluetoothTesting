@@ -25,6 +25,7 @@ signals:
 private slots:
     void connectClicked();
     void quitClicked();
+    void playClicked();
     void clientDisconnected();
     void startClient(const QBluetoothServiceInfo &remoteService, const QBluetoothAddress localDevice);
     void stopClient();

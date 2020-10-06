@@ -12,6 +12,12 @@ AudioFileStream::AudioFileStream() :
     isDecodingFinished = false;
 }
 
+AudioFileStream::~AudioFileStream()
+{
+
+}
+
+
 // format - it is audio format to which we whant decode audio data
 bool AudioFileStream::init(const QAudioFormat& format)
 {

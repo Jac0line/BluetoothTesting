@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.13.1, 2020-09-27T15:22:35. -->
+<!-- Written by QtCreator 4.13.1, 2020-10-05T16:25:19. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -323,8 +323,9 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/jacoline/Documents/btchat/btchat.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/jacoline/Documents/btchat/btchat.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">btchat2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/jacoline/Documents/BluetoothTesting/btchat.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/jacoline/Documents/BluetoothTesting/btchat.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>

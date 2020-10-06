@@ -18,16 +18,41 @@ namespace Ui {
 }
 QT_END_NAMESPACE
 
+
+/**
+ * @brief The RemoteSelector class Constructs a remote selector with the mac address of the local bluetooth device (dongle)
+ * provides functionality to discover other bluetooth devices.
+ */
 class RemoteSelector : public QDialog
 {
     Q_OBJECT
 
 public:
+
+    /**
+     * @brief RemoteSelector Constructs a remote selector
+     * @param localAdapter The mac adress of the local Bluetooth adapter (dongle)
+     * @param parent A pointer to the QWidget parent
+     */
     explicit RemoteSelector(const QBluetoothAddress &localAdapter, QWidget *parent = nullptr);
+
     ~RemoteSelector();
 
+    /**
+     * @brief startDiscovery Starts a QBluetoothServiceDiscoveryAgent
+     * @param uuid Filter only devices which offer the uuid service
+     */
     void startDiscovery(const QBluetoothUuid &uuid);
+
+    /**
+     * @brief stopDiscovery Stop the QBluetoothServiceDiscoveryAgent
+     */
     void stopDiscovery();
+
+    /**
+     * @brief service Returns the QBluetoothServiceInfo of a discovered device
+     * @return The QBluetoothServiceInfo of a discovered device
+     */
     QBluetoothServiceInfo service() const;
 
 private:

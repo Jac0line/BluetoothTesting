@@ -8,12 +8,20 @@
 
 QT_USE_NAMESPACE
 
+/**
+ * @brief The Chat class Create and maintain a QBluetoothSocket connection
+ */
 class Chat : public QDialog
 {
     Q_OBJECT
 
 public:
+    /**
+     * @brief Chat Constructs an Chat instance
+     * @param parent pointer to the QWidget address
+     */
     explicit Chat(QWidget *parent = nullptr);
+
     ~Chat();
 
 signals:

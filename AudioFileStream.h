@@ -11,22 +11,48 @@
 #include <QAudioFormat>
 #include <QFile>
 
-// Class for decode audio files like MP3 and push decoded audio data to QOutputDevice (like speaker) and also signal newData().
-// For decoding it uses QAudioDecoder which uses QAudioFormat for decode audio file for desire format, then put decoded data to buffer.
-// based on: https://github.com/Znurre/QtMixer
+/**
+ * @brief The AudioFileStream class Decode audio files like MP3 and push decoded audio data to QOutputDevice, based on: https://github.com/Znurre/QtMixer
+ */
 class AudioFileStream : public QIODevice
 {
     Q_OBJECT
 
 public:
+    /**
+     * @brief AudioFileStream Constructs AudioFileStream with input, ouput and state
+     */
     AudioFileStream();
+
+    ~AudioFileStream();
+
+    /**
+     * @brief init Initialize buffers and set audio format for decoding
+     * @param format The audioformat that needs decoding
+     * @return Succeeded initialising 
+     */
     bool init(const QAudioFormat& format);
 
+    /**
+     * @brief The State enum State of the AudioFileStream
+     */
     enum State { Playing, Stopped };
-
+    
+    /**
+     * @brief play Opens the file and starts the decoder
+     * @param filePath The path to the audio file that needs to be decoded
+     */
     void play(const QString &filePath);
+    
+    /**
+     * @brief stop Stops and clears decoder and changes state
+     */
     void stop();
 
+    /**
+     * @brief atEnd Check if file decoding is finished 
+     * @return True is file is fully read and decoded
+     */
     bool atEnd() const override;
 
 protected:
